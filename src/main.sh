@@ -1394,8 +1394,13 @@ else
 			msg "$(gettext "Installing missing dependencies...")"
 
 			if ! sudo "${SUDOARGS[@]}" -- apt-get satisfy "${APTARGS[@]}" -- "${predepends[@]}" "${depends[@]}" "${makedepends[@]}" "${checkdepends[@]}"; then
-				error "$(gettext "Failed to install missing dependencies.")"
-				exit "${E_INSTALL_DEPS_FAILED}"
+				warning "$(gettext "apt-get satisfy is not available, falling back to apt-get install.")"
+
+				# Fallback to apt-get install
+				if ! DEBIAN_FRONTEND=noninteractive sudo "${SUDOARGS[@]}" -- apt-get install -y "${APTARGS[@]}" -- "${predepends[@]}" "${depends[@]}" "${makedepends[@]}" "${checkdepends[@]}"; then
+					error "$(gettext "Failed to install missing dependencies.")"
+					exit "${E_INSTALL_DEPS_FAILED}"
+				fi
 			fi
 
 			# Get the list of packages that were just installed.
