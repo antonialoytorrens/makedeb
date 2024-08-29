@@ -2,7 +2,7 @@ Source: makedeb
 Section: utils
 Priority: optional
 Maintainer: Antoni Aloy Torrens <aaloytorrens@gmail.com>
-Build-Depends: asciidoctor
+Build-Depends: debhelper, asciidoctor
 Homepage: https://makedeb.org
 Standards-Version: 4.7.0
 
