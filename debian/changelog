@@ -1,0 +1,5 @@
+makedeb (16.0.0-1) unstable; urgency=medium
+
+  * Initial package release.
+
+ -- Antoni Aloy Torrens <aaloytorrens@gmail.com>  Fri, 29 Aug 2024 09:27:14 +0100

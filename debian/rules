@@ -1,0 +1,14 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	make prepare PKGVER="16.0.0" \
+		RELEASE="stable" \
+		TARGET="apt" \
+		CURRENT_VERSION="16.0.0-stable"
+
+override_dh_install:
+	make package DESTDIR="$(CURDIR)/debian/makedeb" \
+		TARGET="apt"
