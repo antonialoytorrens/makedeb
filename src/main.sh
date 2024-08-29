@@ -1393,7 +1393,7 @@ else
 			# Install the missing deps.
 			msg "$(gettext "Installing missing dependencies...")"
 
-			if ! sudo "${SUDOARGS[@]}" -- apt-get satisfy "${APTARGS[@]}" -- "${predepends[@]}" "${depends[@]}" "${makedepends[@]}" "${checkdepends[@]}"; then
+			if ! sudo "${SUDOARGS[@]}" -- apt-get satisfy "${APTARGS[@]}" -- "${predepends[@]}" "${depends[@]}" "${makedepends[@]}" "${checkdepends[@]}" 2>/dev/null; then
 				warning "$(gettext "apt-get satisfy is not available, falling back to apt-get install.")"
 
 				# Fallback to apt-get install
