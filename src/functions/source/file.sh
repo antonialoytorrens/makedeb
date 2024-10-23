@@ -97,7 +97,15 @@ extract_file() {
 	fi
 
 	# do not rely on extension for file type
-	local file_type=$(file -S -bizL -- "$file")
+	if file -S -bizL /dev/null >/dev/null 2>&1; then
+		local file_type=$(file -S -bizL -- "$file")
+	else
+		# Ubuntu 18.04 and earlier do not have 'file -S' available.
+		# Equivalent command is 'file -s'.
+		warning "$(gettext "Command 'file -S' is not supported. Falling back to 'file -s'...")"
+		local file_type=$(file -s -bizL -- "$file")
+	fi
+
 	local ext=${file##*.}
 	local cmd=''
 	case "$file_type" in

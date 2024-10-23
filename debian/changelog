@@ -1,3 +1,9 @@
+makedeb (16.0.0-2) unstable; urgency=medium
+
+  * Support older distributions when redefining 'file -S' in case it is not supported.
+
+ -- Antoni Aloy Torrens <aaloytorrens@gmail.com>  Wed, 23 Oct 2024 11:38:45 +0100
+
 makedeb (16.0.0-1) unstable; urgency=medium
 
   * Initial package release.
